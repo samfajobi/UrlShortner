@@ -9,13 +9,14 @@ const UrlModel = require("/model/urlModel")
 
 const baseUrl = ""
 
-router.post("shorten", async (req, res) => {
+router.post("/shorten", async (req, res) => {
 
     const { longUrl } = req.body
 
     if(!validUrl.isUri(baseUrl)) {
         res.status(401).json("Invalid Url")
     }
+
 
     const urlCode = shortid.generate()
 
@@ -30,16 +31,30 @@ router.post("shorten", async (req, res) => {
 
             } else {
 
-                baseUrl + "/" + urlCode
+               const shortUrl =  baseUrl + "/" + urlCode
 
+                const url = new UrlModel({
+                    longUrl,
+                    shortUrl,
+                    urlCode,
+                    date: new Date()
+                })
+
+                await url.save();
+                res.json(url)    
             }
 
-
-
-
-        } catch {
+        } catch(err) {
+            console.log(err)
+            res.status(500).json("Server Error!!!")
 
         }
 
+    } else {
+        res.status(500).json("Invalid Url")
+
     }
 })
+
+
+module.exports = router;
