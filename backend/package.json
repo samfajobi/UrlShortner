@@ -1,7 +1,6 @@
 {
   "name": "urlshortner",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
@@ -15,5 +14,6 @@
     "nodemon": "^2.0.16",
     "short-id": "^0.1.0-1",
     "valid-url": "^1.0.9"
-  }
+  },
+  "description": ""
 }
