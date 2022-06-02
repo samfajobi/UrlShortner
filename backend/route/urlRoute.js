@@ -1,10 +1,10 @@
 const express = require('express')
 const validUrl = require('valid-url')
-const shortid = require('shortid')
+const shortid = require('short-id')
 
 const router = express.Router()
 
-const UrlModel = require("/model/urlModel")
+const UrlModel = require("../model/urlModel")
 
 
 const baseUrl = ""
@@ -24,7 +24,7 @@ router.post("/shorten", async (req, res) => {
 
         try {
 
-            const url = await UrlModel.findOne(longUrl)
+            const url = await UrlModel.findOne({longUrl})
 
             if(url) {
                 res.json(url)
