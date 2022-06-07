@@ -13,6 +13,8 @@ const Input = styled.div`
 
 `
 
+const UrlHeader = styled.h2``
+
 
 
 const urlPage = () => {
@@ -22,6 +24,7 @@ const urlPage = () => {
   return (
       <Container>
           <Wrapper>
+              <UrlHeader>Insert Your Url Here!!!</UrlHeader>
               <Input placeholder="Type in your URL....."/>
           </Wrapper>
       </Container>
